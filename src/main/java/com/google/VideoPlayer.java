@@ -194,23 +194,33 @@ Boolean b = false;
 	  System.out.println("Here are the results for "+searchTerm+" :");
 
 arrlist.sort(null);
-	  for (int x = 0 ; x < arrlist.size(); x++) {
-		  System.out.println(x+") " + arrlist.get(x));
-		  arrlist.get(x).concat(String.valueOf(x));
+StringBuilder str = new StringBuilder();
+int z=1;
+	  for (String s : arrlist) {
+		  str.append(z+")"+s);
+		  System.out.println(str);
+		  z++;
 	  }
     System.out.println("Would you like to play any of the above? If yes, specify the number of the video.\r\n"
     		+ "If your answer is not a valid number, we will assume it's a no.");
     var scanner = new Scanner(System.in);
     if(scanner.hasNextInt()) {
         int num = scanner.nextInt();
-        if(num<i+1) {
+        if(num<z+1) {
         	System.out.println("Valid");
-      	  for (int x = 0 ; x < arrlist.size(); x++) {
-    		 if(arrlist.get(x).contains(String.valueOf(num))) {
-    			 String value =arrlist.get(x).substring(arrlist.get(x).indexOf("(")+1, 
-    					 arrlist.get(x).indexOf(")"));
+      	  for (String s : arrlist) {
+      		  
+      		 String value =s.substring(s.indexOf("(")+1,s.indexOf(")"));
+//	        	System.out.println(value);
+//	        	System.out.println(s);
+	        	str.append(z+s);
+	        	if(s.contains(String.valueOf(num))) {
+	    		String value1 =s.substring(s.indexOf("(")+1,s.indexOf(")"));
+    	        System.out.println(value1);
     			 playVideo(value);
-    	  }
+	        	}
+
+//    	  }
     	  }
         }
     }
@@ -218,7 +228,53 @@ arrlist.sort(null);
   }
 
   public void searchVideosWithTag(String videoTag) {
-    System.out.println("searchVideosWithTag needs implementation");
+	  videoTag.toLowerCase();
+	  String strArr[];
+	  int i=1;
+      // create a new ArrayList
+      List<String> arrlist = new ArrayList<String>();
+
+	  for(Video v: videoLibrary.getVideos()) {
+		  if( v.getTags().contains(videoTag)) {
+		
+			  String entry=" "+v.getTitle() +"("+v.getVideoId() +")"+v.getTags();
+
+			arrlist.add(entry);
+		  }
+	  }
+	  System.out.println("Here are the results for "+videoTag+" :");
+
+arrlist.sort(null);
+StringBuilder str = new StringBuilder();
+int z=1;
+	  for (String s : arrlist) {
+		  str.append(z+")"+s);
+		  System.out.println(str);
+		  z++;
+	  }
+    System.out.println("Would you like to play any of the above? If yes, specify the number of the video.\r\n"
+    		+ "If your answer is not a valid number, we will assume it's a no.");
+    var scanner = new Scanner(System.in);
+    if(scanner.hasNextInt()) {
+        int num = scanner.nextInt();
+        if(num<z+1) {
+        	System.out.println("Valid");
+      	  for (String s : arrlist) {
+      		  
+      		 String value =s.substring(s.indexOf("(")+1,s.indexOf(")"));
+//	        	System.out.println(value);
+//	        	System.out.println(s);
+	        	str.append(z+s);
+	        	if(s.contains(String.valueOf(num))) {
+	    		String value1 =s.substring(s.indexOf("(")+1,s.indexOf(")"));
+    	        System.out.println(value1);
+    			 playVideo(value);
+	        	}
+
+//    	  }
+    	  }
+        }
+    }
   }
 
   public void flagVideo(String videoId) {
