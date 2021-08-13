@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: com.google.Part1Test
+-------------------------------------------------------------------------------
+Tests run: 21, Failures: 2, Errors: 2, Skipped: 0, Time elapsed: 0.235 s <<< FAILURE! - in com.google.Part1Test
+com.google.Part1Test.testPlayVideoDontStopPreviousIfNonExistent  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.google.Part1Test.testPlayVideoDontStopPreviousIfNonExistent(Part1Test.java:73)
+
+com.google.Part1Test.testPauseVideoPlayVideo  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: not a string containing "PAUSED"
+     but: was "Currently playing: Amazing Cats (amazing_cats_video_id) [#cat, #animal] - PAUSED"
+	at com.google.Part1Test.testPauseVideoPlayVideo(Part1Test.java:190)
+
+com.google.Part1Test.testPlayVideoNonExistent  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.google.Part1Test.testPlayVideoNonExistent(Part1Test.java:53)
+
+com.google.Part1Test.testShowAllVideos  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: a string containing "Amazing Cats (amazing_cats_video_id) [#cat, #animal]"
+     but: was "Another Cat Video another_cat_video_id [#cat, #animal]"
+	at com.google.Part1Test.testShowAllVideos(Part1Test.java:32)
+
